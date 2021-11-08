@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <title>第6回
+    </title>
+<style>
+    .a{
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+            font-style: italic;
+
+            .b{
+            
+            text-indent: 2em;
+            text-align: left;
+            font-size: 25px;
+            font-style: italic;
+        }
+
+
+</style>
+
+
+
+</head>
+
+
+<body>
+    <div class="a"><font color="violet">飛行機ゲーム　demo</font></div>
+    <div class="b">
+        <code>
+         <ol>
+        <li>pygame.init()</li>
+
+<li>bg_size = width, height = 480, 600</li>
+<li>screen = pygame.display.set_mode(bg_size)</li>
+<li>pygame.display.set_caption("飛行機ゲーム Demo")</li>
+
+<li>background = pygame.image.load("images/yuzhou.png").convert()</li>
+
+<li>BLACK = (0, 0, 0)</li>
+<li>WHITE = (255, 255, 255)</li>
+<li>GREEN = (0, 255, 0)</li>
+<li>RED = (255, 0, 0)</li>
+
+
+<li>ygame.mixer.music.load("sound/game_music.ogg")</li>
+<li>pygame.mixer.music.set_volume(0.2)</li>
+<li>bullet_sound = pygame.mixer.Sound("sound/bullet.wav")</li>
+<li>bullet_sound.set_volume(0.2)</li>
+<li>bomb_sound = pygame.mixer.Sound("sound/use_bomb.wav")</li>
+<li>bomb_sound.set_volume(0.2)</li>
+<li>supply_sound = pygame.mixer.Sound("sound/supply.wav")</li>
+<li>supply_sound.set_volume(0.2)</li>
+<li>get_bomb_sound = pygame.mixer.Sound("sound/get_bomb.wav")</li>
+<li>get_bomb_sound.set_volume(0.2)</li>
+<li>get_bullet_sound = pygame.mixer.Sound("sound/get_bullet.wav")</li>
+<li>get_bullet_sound.set_volume(0.2)</li>
+<li>upgrade_sound = pygame.mixer.Sound("sound/upgrade.wav")</li>
+<li>upgrade_sound.set_volume(0.2)</li>
+<li>enemy3_fly_sound = pygame.mixer.Sound("sound/enemy3_flying.wav")</li>
+<li>enemy3_fly_sound.set_volume(0.2)</li>
+<li>enemy1_down_sound = pygame.mixer.Sound("sound/enemy1_down.wav")</li>
+<li>enemy1_down_sound.set_volume(0.2)</li>
+<li>enemy2_down_sound = pygame.mixer.Sound("sound/enemy2_down.wav")</li>
+<li>enemy2_down_sound.set_volume(0.2)</li>
+<li>enemy3_down_sound = pygame.mixer.Sound("sound/enemy3_down.wav")</li>
+<li>enemy3_down_sound.set_volume(0.5)</li>
+<li>me_down_sound = pygame.mixer.Sound("sound/me_down.wav")</li>
+<li>me_down_sound.set_volume(0.2)</li>
+
+
+<li>def add_small_enemies(group1, group2, num):</li>
+    <li>for i in range(num):</li>
+        <li>e1 = enemy.SmallEnemy(bg_size)</li>
+            <li>group1.add(e1)</li>
+                <li>group2.add(e1)</li>
+
+
+                    <li>def add_mid_enemies(group1, group2, num):</li>
+                        <li>for i in range(num):</li>
+                            <li>e2 = enemy.MidEnemy(bg_size)</li>
+                                <li>group1.add(e2)</li>
+                                    <li>group2.add(e2)</li>
+
+
+                                        <li>def add_big_enemies(group1, group2, num):</li>
+                                            <li>for i in range(num):</li>
+                                                <li>e3 = enemy.BigEnemy(bg_size)</li>
+                                                    <li>group1.add(e3)</li>
+                                                        <li>group2.add(e3)</li>
+
+
+                                                            <li>def inc_speed(target, inc):</li>
+                                                                <li>for each in target:</li>
+                                                                    <li> each.speed += inc</li>
+
+
+                                                                        <li>def main():</li>
+                                                                            <li>pygame.mixer.music.play(-1)</li>
+    
+
+                                                                                <li>me = myplane.MyPlane(bg_size)</li>
+    
+                                                                                    <li>enemies = pygame.sprite.Group()</li>
+    
+
+                                                                                        <li>small_enemies = pygame.sprite.Group()</li>
+                                                                                            <li>add_small_enemies(small_enemies, enemies, 15)</li>
+    
+
+                                                                                                <li>mid_enemies = pygame.sprite.Group()</li>
+                                                                                                    <li>add_mid_enemies(mid_enemies, enemies, 4)</li>
+    
+
+                                                                                                        <li>big_enemies = pygame.sprite.Group()</li>
+                                                                                                            <li>add_big_enemies(big_enemies, enemies, 2)</li>
+    
+
+                                                                                                                <li>bullet1 = []</li>
+                                                                                                                    <li>bullet1_index = 0</li>
+                                                                                                                        <li>BULLET1_NUM = 4</li>
+                                                                                                                            <li>for i in range(BULLET1_NUM):</li>
+                                                                                                                                <li>bullet1.append(bullet.Bullet1(me.rect.midtop))</li>
+    
+
+                                                                                                                                    <li>bullet2 = []</li>
+                                                                                                                                        <li>bullet2_index = 0</li>
+                                                                                                                                            <li>BULLET2_NUM = 8</li>
+                                                                                                                                                <li>for i in range(BULLET2_NUM // 2):</li>
+                                                                                                                                                    <li>bullet2.append(bullet.Bullet2((me.rect.centerx - 33, me.rect.centery)))</li>
+                                                                                                                                                        <li> bullet2.append(bullet.Bullet2((me.rect.centerx + 30, me.rect.centery)))</li>
+    
+                                                                                                                                                            <li>clock = pygame.time.Clock()</li>
+    
+
+                                                                                                                                                                <li>e1_destroy_index = 0</li>
+                                                                                                                                                                    <li>e2_destroy_index = 0</li>
+                                                                                                                                                                        <li>e3_destroy_index = 0</li>
+                                                                                                                                                                            <li>me_destroy_index = 0</li>
+    
+
+                                                                                                                                                                            <li>score = 0</li>
+                                                                                                                                                                            <li>score_font = pygame.font.Font("font/font.ttf", 36)</li>
+    
+
+                                                                                                                                                                            <li>paused = False
+                                                                                                                                                                                <li>pause_nor_image = pygame.image.load("images/pause_nor.png").convert_alpha()</li>
+                                                                                                                                              <li>pause_pressed_image = pygame.image.load("images/pause_pressed.png").convert_alpha()</li>
+     <li>resume_nor_image = pygame.image.load("images/resume_nor.png").convert_alpha()</li>
+     <li> resume_pressed_image = pygame.image.load("images/resume_pressed.png").convert_alpha()</li>
+     <li> paused_rect = pause_nor_image.get_rect()</li>
+     <li>paused_rect.left, paused_rect.top = width - paused_rect.width - 10, 10</li>
+     <li> paused_image = pause_nor_image</li>
+    
+
+     <li>level = 1</li>
+    
+
+     <li>bomb_image = pygame.image.load("images/bomb.png").convert_alpha()</li>
+     <li>bomb_rect = bomb_image.get_rect()</li>
+     <li>bomb_font = pygame.font.Font("font/font.ttf", 48)</li>
+     <li>bomb_num = 3</li>
+    
+
+     <li>bullet_supply = supply.Bullet_Supply(bg_size)</li>
+     <li>bomb_supply = supply.Bomb_Supply(bg_size)</li>
+     <li>SUPPLY_TIME = USEREVENT</li>
+     <li>pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)</li>
+    
+
+     <li>DOUBLE_BULLET_TIME = USEREVENT + 1</li>
+    
+
+     <li>is_double_bullet = False</li>
+    
+
+     <li>INVINCIBLE_TIME = USEREVENT + 2</li>
+    
+
+     <li>life_image = pygame.image.load("images/life.png").convert_alpha()</li>
+     <li>ife_rect = life_image.get_rect()</li>
+     <li>life_num = 3</li>
+
+     <li>ecorded = False</li>
+    
+
+     <li>gameover_font = pygame.font.Font("font/font.TTF", 48)</li>
+     <li>again_image = pygame.image.load("images/again.png").convert_alpha()</li>
+     <li>again_rect = again_image.get_rect()</li>
+     <li>gameover_image = pygame.image.load("images/gameover.png").convert_alpha()</li>
+     <li>gameover_rect = gameover_image.get_rect()</li>
+    
+
+     <li>switch_image = True</li>
+    
+
+     <li>elay = 100</li>
+    
+     <li>unning = True</li>
+    
+     <li>while running:</li>
+     <li>for event in pygame.event.get():</li>
+     <li> if event.type == QUIT:</li>
+     <li> pygame.quit()</li>
+     <li> sys.exit()</li>
+            
+     <li>elif event.type == MOUSEBUTTONDOWN:</li>
+     <li>if event.button == 1 and paused_rect.collidepoint(event.pos):</li>
+     <li> paused = not paused</li>
+     <li>if paused:</li>
+     <li>pygame.time.set_timer(SUPPLY_TIME, 0)</li>
+     <li>pygame.mixer.music.pause()</li>
+     <li>pygame.mixer.pause()</li>
+     <li>else:</li>
+     <li> pygame.time.set_timer(SUPPLY_TIME, 30 * 1000)</li>
+     <li>pygame.mixer.music.unpause()</li>
+     <li>pygame.mixer.unpause()</li>
+            
+     <li>elif event.type == MOUSEMOTION:</li>
+     <li>if paused_rect.collidepoint(event.pos):</li>
+     <li>if paused:</li>
+     <li> paused_image = resume_pressed_image</li>
+     <li>else:</li>
+     <li>paused_image = pause_pressed_image</li>
+     <li>else:</li>
+     <li>if paused:</li>
+     <li>paused_image = resume_nor_image</li>
+     <li>else:</li>
+     <li>paused_image = pause_nor_image</li>
+            
+     <li>elif event.type == KEYDOWN:</li>
+     <li>if event.key == K_SPACE:</li>
+     <li>if bomb_num:</li>
+     <li> bomb_num -= 1</li>
+     <li> bomb_sound.play()</li>
+     <li>for each in enemies:</li>
+     <li>     if each.rect.bottom > 0:</li>
+     <li>         each.active = False</li>
+            
+     <li>  elif event.type == SUPPLY_TIME:</li>
+     <li> supply_sound.play()</li>
+     <li> if choice([True, False]):</li>
+     <li>   bomb_supply.reset()</li>
+     <li>else:</li>
+     <li> bullet_supply.reset()</li>
+            
+     <li> elif event.type == DOUBLE_BULLET_TIME:</li>
+     <li>  is_double_bullet = False</li>
+     <li> pygame.time.set_timer(DOUBLE_BULLET_TIME, 0)</li>
+            
+     <li> elif event.type == INVINCIBLE_TIME:</li>
+     <li>  me.invincible = False</li>
+     <li>pygame.time.set_timer(INVINCIBLE_TIME, 0)</li>
+        
+     <li>if level == 1 and score > 50000:</li>
+     <li> level = 2</li>
+     <li>upgrade_sound.play()</li>
+
+     <li> add_small_enemies(small_enemies, enemies, 3)</li>
+     <li> add_mid_enemies(mid_enemies, enemies, 2)</li>
+     <li>add_big_enemies(big_enemies, enemies, 1)</li>
+
+     <li>inc_speed(small_enemies, 1)</li>
+     <li>elif level == 2 and score > 300000:</li>
+     <li>level = 3</li>
+     <li>upgrade_sound.play()</li>
+
+     <li>add_small_enemies(small_enemies, enemies, 5)</li>
+     <li>add_mid_enemies(mid_enemies, enemies, 3)</li>
+     <li>add_big_enemies(big_enemies, enemies, 2)</li>
+
+     <li>inc_speed(small_enemies, 1)</li>
+     <li>inc_speed(mid_enemies, 1)</li>
+     <li>elif level == 3 and score > 600000:</li>
+     <li>level = 4</li>
+     <li>upgrade_sound.play()</li>
+
+     <li>add_small_enemies(small_enemies, enemies, 5)</li>
+     <li>add_mid_enemies(mid_enemies, enemies, 3)</li>
+     <li>add_big_enemies(big_enemies, enemies, 2)</li>
+
+     <li>inc_speed(small_enemies, 1)</li>
+     <li>    inc_speed(mid_enemies, 1)</li>
+     <li> elif level == 4 and score > 1000000:</li>
+     <li>    upgrade_sound.play()</li>
+
+     <li>    add_small_enemies(small_enemies, enemies, 5)</li>
+     <li>    add_mid_enemies(mid_enemies, enemies, 3)</li>
+     <li>    add_big_enemies(big_enemies, enemies, 2)</li>
+     <li>
+        <li>    inc_speed(small_enemies, 1)</li>
+        <li>    inc_speed(mid_enemies, 1)</li>
+        <li>
+         <li> screen.blit(background, (0, 0))</li>
+        
+        <li> if life_num and not paused:</li>
+
+         <li>    key_pressed = pygame.key.get_pressed()</li>
+            
+         <li>     if key_pressed[K_w] or key_pressed[K_UP]:</li>
+         <li>       me.moveUp()</li>
+         <li>    if key_pressed[K_s] or key_pressed[K_DOWN]:</li>
+         <li>     me.moveDown()</li>
+         <li>   if key_pressed[K_a] or key_pressed[K_LEFT]:</li>
+         <li> me.moveLeft()</li>
+         <li> if key_pressed[K_d] or key_pressed[K_RIGHT]:</li>
+         <li> me.moveRight()</li>
+            
+
+         <li>  if bomb_supply.active:</li>
+         <li>bomb_supply.move()</li>
+         <li>screen.blit(bomb_supply.image, bomb_supply.rect)</li>
+         <li>if pygame.sprite.collide_mask(bomb_supply, me):</li>
+         <li>get_bomb_sound.play()</li>
+         <li>if bomb_num < 3:</li>
+         <li>bomb_num += 1</li>
+         <li>bomb_supply.active = False</li>
+            
+
+         <li>if bullet_supply.active:</li>
+         <li>bullet_supply.move()</li>
+         <li>screen.blit(bullet_supply.image, bullet_supply.rect)</li>
+         <li>if pygame.sprite.collide_mask(bullet_supply, me):</li>
+         <li>get_bullet_sound.play()</li>
+         <li>is_double_bullet = True</li>
+         <li>pygame.time.set_timer(DOUBLE_BULLET_TIME, 18 * 1000)</li>
+         <li>bullet_supply.active = False</li>
+            
+
+         <li>if not (delay % 10):</li>
+         <li>bullet_sound.play()</li>
+         <li>if is_double_bullet:</li>
+         <li>bullets = bullet2</li>
+         <li>bullets[bullet2_index].reset((me.rect.centerx - 33, me.rect.centery))</li>
+         <li>bullets[bullet2_index + 1].reset((me.rect.centerx + 30, me.rect.centery))</li>
+         <li>bullet2_index = (bullet2_index + 2) % BULLET2_NUM</li>
+         <li>else:</li>
+         <li>bullets = bullet1</li>
+         <li>bullets[bullet1_index].reset(me.rect.midtop)</li>
+         <li>bullet1_index = (bullet1_index + 1) % BULLET1_NUM</li>
+            
+
+         <li>for b in bullets:</li>
+         <li>if b.active:</li>
+         <li>b.move()</li>
+         <li>screen.blit(b.image, b.rect)</li>
+         <li>enemy_hit = pygame.sprite.spritecollide(b, enemies, False, pygame.sprite.collide_mask)</li>
+         <li>if enemy_hit:</li>
+         <li>b.active = False</li>
+         <li>for e in enemy_hit:</li>
+         <li>if e in mid_enemies or e in big_enemies</li>:
+         <li>e.hit = True</li>
+         <li>e.energy -= 1</li>
+         <li>if e.energy == 0:</li>
+         <li>e.active = False</li>
+         <li>else:</li>
+         <li>e.active = False</li>
+            
+
+         <li>for each in big_enemies:</li>
+         <li>if each.active:</li>
+         <li>each.move()</li>
+         <li>if each.hit:</li>
+         <li>screen.blit(each.image_hit, each.rect)</li>
+         <li>each.hit = False</li>
+         <li>else:</li>
+         <li>if switch_image:</li>
+         <li> screen.blit(each.image1, each.rect)</li>
+         <li>else:</li>
+         <li>screen.blit(each.image2, each.rect)</li>
+                    
+
+         <li>pygame.draw.line(screen, BLACK, \</li>
+         <li>(each.rect.left, each.rect.top - 5), \</li>
+         <li>(each.rect.right, each.rect.top - 5), \</li>
+         <li> 2)</li>
+
+         <li>energy_remain = each.energy / enemy.BigEnemy.energy</li>
+         <li>if energy_remain > 0.2:</li>
+         <li> energy_color = GREEN</li>
+         <li>else:</li>
+         <li>energy_color = RED</li>
+         <li>pygame.draw.line(screen, energy_color, \</li>
+         <li>(each.rect.left, each.rect.top - 5), \</li>
+         <li>(each.rect.left + each.rect.width * energy_remain, \</li>
+         <li>each.rect.top - 5), 2)</li>
+                    
+
+         <li>if each.rect.bottom == -50:</li>
+         <li>enemy3_fly_sound.play(-1)</li>
+         <li>else:</li>
+
+         <li>if not (delay % 3):</li>
+         <li>if e3_destroy_index == 0:</li>
+         <li> enemy3_down_sound.play()</li>
+         <li>screen.blit(each.destroy_images[e3_destroy_index], each.rect)</li>
+         <li>e3_destroy_index = (e3_destroy_index + 1) % 6</li>
+         <li>if e3_destroy_index == 0:</li>
+         <li> enemy3_fly_sound.stop()</li>
+         <li>score += 10000</li>
+         <li>each.reset()</li>
+            
+
+         <li>for each in mid_enemies:</li>
+         <li>if each.active:</li>
+         <li>each.move()</li>
+                    
+         <li>if each.hit:</li>
+         <li>screen.blit(each.image_hit, each.rect)</li>
+         <li> each.hit = False</li>
+         <li>else:</li>
+         <li>screen.blit(each.image, each.rect)</li>
+
+         <li>pygame.draw.line(screen, BLACK, \</li>
+         <li>(each.rect.left, each.rect.top - 5), \</li>
+         <li>(each.rect.right, each.rect.top - 5), \</li>
+         <li>2)</li>
+
+         <li>energy_remain = each.energy / enemy.MidEnemy.energy</li>
+         <li>if energy_remain > 0.2:</li>
+         <li>energy_color = GREEN</li>
+         <li>else:</li>
+         <li>energy_color = RED</li>
+         <li>pygame.draw.line(screen, energy_color, \</li>
+         <li>(each.rect.left, each.rect.top - 5), \</li>
+         <li>(each.rect.left + each.rect.width * energy_remain, \</li>
+         <li> each.rect.top - 5), 2)</li>
+         <li>else:</li>
+
+         <li>if not (delay % 3):</li>
+         <li>if e2_destroy_index == 0:</li>
+         <li>enemy2_down_sound.play()</li>
+         <li>screen.blit(each.destroy_images[e2_destroy_index], each.rect)</li>
+         <li>e2_destroy_index = (e2_destroy_index + 1) % 4</li>
+         <li>if e2_destroy_index == 0:</li>
+         <li> score += 6000</li>
+         <li>each.reset()</li>
+            
+
+         <li>for each in small_enemies:</li>
+         <li>if each.active:</li>
+         <li>each.move()</li>
+         <li>screen.blit(each.image, each.rect)</li>
+         <li>else:</li>
+
+         <li>if not (delay % 3):</li>
+         <li>if e1_destroy_index == 0:</li>
+         <li> enemy1_down_sound.play()</li>
+         <li>screen.blit(each.destroy_images[e1_destroy_index], each.rect)</li>
+         <li>e1_destroy_index = (e1_destroy_index + 1) % 4</li>
+         <li>if e1_destroy_index == 0:</li>
+         <li>score += 1000</li>
+         <li>each.reset()</li>
+            
+
+         <li>enemies_down = pygame.sprite.spritecollide(me, enemies, False, pygame.sprite.collide_mask)</li>
+         <li>if enemies_down and not me.invincible:</li>
+         <li>me.active = False</li>
+         <li>for e in enemies_down:</li>
+         <li>e.active = False</li>
+            
+
+         <li>if me.active:</li>
+         <li>if switch_image:</li>
+         <li>screen.blit(me.image1, me.rect)</li>
+         <li>else:</li>
+         <li>screen.blit(me.image2, me.rect)</li>
+         <li>else:</li>
+
+         <li>if not (delay % 3):</li>
+         <li>if me_destroy_index == 0:</li>
+         <li>me_down_sound.play()</li>
+         <li>screen.blit(me.destroy_images[me_destroy_index], me.rect)</li>
+         <li>me_destroy_index = (me_destroy_index + 1) % 4</li>
+         <li>if me_destroy_index == 0:</li>
+         <li>life_num -= 1</li>
+         <li>me.reset()</li>
+         <li>pygame.time.set_timer(INVINCIBLE_TIME, 3 * 1000)</li>
+            
+
+         <li>bomb_text = bomb_font.render("× %d" % bomb_num, True, WHITE)</li>
+         <li>text_rect = bomb_text.get_rect()</li>
+         <li>screen.blit(bomb_image, (10, height - 10 - bomb_rect.height))</li>
+         <li>screen.blit(bomb_text, (20 + bomb_rect.width, height - 5 - text_rect.height))</li>
+            
+
+         <li>if life_num:</li>
+         <li>for i in range(life_num):</li>
+         <li> screen.blit(life_image, \</li>
+         <li>(width - 10 - (i + 1) * life_rect.width, \</li>
+         <li>height - 10 - life_rect.height))</li>
+            
+
+         <li>score_text = score_font.render("Score : %s" % str(score), True, WHITE)</li>
+         <li>screen.blit(score_text, (10, 5))</li>
+        
+
+         <li>elif life_num == 0:</li>
+
+         <li>pygame.mixer.music.stop()</li>
+            
+
+         <li>pygame.mixer.stop()</li>
+            
+
+         <li>pygame.time.set_timer(SUPPLY_TIME, 0)</li>
+            
+         <li>if not recorded:</li>
+         <li>recorded = True</li>
+
+         <li>with open("record.txt", "r") as f:</li>
+         <li>record_score = int(f.read())</li>
+                
+
+         <li>if score > record_score:</li>
+         <li> with open("record.txt", "w") as f:</li>
+         <li>f.write(str(score))</li>
+            
+
+         <li>record_score_text = score_font.render("Best : %d" % record_score, True, (255, 255, 255))</li>
+         <li>screen.blit(record_score_text, (50, 50))</li>
+            
+         <li>gameover_text1 = gameover_font.render("Your Score", True, (255, 255, 255))</li>
+         <li>gameover_text1_rect = gameover_text1.get_rect()</li>
+         <li>gameover_text1_rect.left, gameover_text1_rect.top = \</li>
+         <li>(width - gameover_text1_rect.width) // 2, height // 3</li>
+         <li>screen.blit(gameover_text1, gameover_text1_rect)</li>
+            
+         <li>gameover_text2 = gameover_font.render(str(score), True, (255, 255, 255))</li>
+         <li>gameover_text2_rect = gameover_text2.get_rect()</li>
+         <li>gameover_text2_rect.left, gameover_text2_rect.top = \</li>
+         <li>(width - gameover_text2_rect.width) // 2, \</li>
+         <li>gameover_text1_rect.bottom + 10</li>
+         <li>screen.blit(gameover_text2, gameover_text2_rect)</li>
+            
+         <li>again_rect.left, again_rect.top = \</li>
+         <li>(width - again_rect.width) // 2, \</li>
+         <li>gameover_text2_rect.bottom + 50</li>
+         <li>screen.blit(again_image, again_rect)</li>
+            
+         <li>gameover_rect.left, gameover_rect.top = \</li>
+         <li>(width - again_rect.width) // 2, \</li>
+         <li>again_rect.bottom + 10</li>
+         <li>screen.blit(gameover_image, gameover_rect)</li>
+            
+
+         <li>if pygame.mouse.get_pressed()[0]:</li>
+
+         <li>pos = pygame.mouse.get_pos()</li>
+
+         <li>if again_rect.left < pos[0] < again_rect.right and \</li>
+         <li>again_rect.top < pos[1] < again_rect.bottom:</li>
+
+         <li>main()</li>
+
+         <li>elif gameover_rect.left < pos[0] < gameover_rect.right and \</li>
+         <li>gameover_rect.top < pos[1] < gameover_rect.bottom:</li>
+
+         <li>pygame.quit()</li>
+         <li>sys.exit()</li>
+                    
+
+         <li>screen.blit(paused_image, paused_rect)</li>
+        
+
+         <li>if not (delay % 5):</li>
+         <li>switch_image = not switch_image</li>
+        
+         <li>delay -= 1</li>
+         <li>if not delay:</li>
+         <li> delay = 100</li>
+        
+         <li>pygame.display.flip()</li>
+         <li>clock.tick(60)</li>
+
+
+         <li>if __name__ == "__main__":</li>
+         <li>try:</li>
+         <li>main()</li>
+         <li>except SystemExit:</li>
+         <li>pass</li>
+         <li>except:</li>
+         <li>traceback.print_exc()</li>
+         <li>pygame.quit()</li>
+         <li>input()</li>
+            </ol></code>
+    </div>
+<div><a href="https://youtu.be/pYk-xTaqOsU">試作録画</a></div>
+<div><a href="https://codeantenna.com/a/AQIsSF8GUo">参照１（ソースコードの資源本体）</a></div>
+<div><a href="https://codeantenna.com/a/tfEUKhjyWq">参照２</a></div>
+
+</body>
+</html>
