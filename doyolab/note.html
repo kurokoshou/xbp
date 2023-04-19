@@ -1,0 +1,114 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>doyolab NOTE</title>
+  <link href="css/m.css" rel="stylesheet">
+<style>
+.infos {
+  position: relative;
+  overflow: visible;
+}
+.right-content {
+  position: fixed;
+  top: 130px;
+  right: 0;
+  width: 250px;
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+}
+.newsview {
+  margin-right: 300px;
+}
+
+
+
+</style>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+<link href="css/m.css" rel="stylesheet">
+<script src="js/jquery-2.1.1.min.js"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="tophead">
+    <div class="logo"><a href="index.html"><h5>Back</h5></a></div>
+  </div>
+</header>
+<article>
+  <div class="infos">
+    <div class="newsview">
+      <h3 class="news_title">NOTE</h3>
+      <div class="news_infos"> 
+        <ul>chatgptにより<br>
+        IoTとは、"Internet of Things"の略称で、モノのインターネットとも呼ばれます。IoTは、様々な種類のデバイス（例えば、センサー、カメラ、家電製品、自動車、工場の機械など）がインターネットに接続され、相互に通信し、データを共有することによって、様々なサービスやアプリケーションを実現する技術です。        <br>
+        <br>
+        IoTの具体的な事例は、以下のようなものがあります。
+        <br>①スマートホーム
+        <br>家庭内の様々な家電製品や設備が、スマートフォンなどの端末と接続され、リモートから制御できるようになります。例えば、スマート電球は、スマートフォンからON/OFFや明るさの調整ができるようになっています。
+        <br>
+        <br>②スマートシティ
+        <br>都市内の様々な施設や設備が、センサーやカメラなどを利用してデータを収集し、効率的な運営や改善に役立てることができます。例えば、駐車場に設置されたセンサーが、空き状況をリアルタイムで把握し、ドライバーに空き情報を提供することができます。
+        <br>
+        <br>③工場の自動化
+        <br>工場内の機械や設備が、IoTを活用して自律的に動作するようになります。例えば、製品の品質管理を行うセンサーが、自動的に製品の検査を行い、問題がある場合は自動的に生産ラインを停止することができます。
+        <br>
+        <br>④自動運転車
+        <br>自動車に搭載されたセンサーやカメラが、周囲の情報を収集し、自動的に運転を行うことができます。例えば、自動運転車は、道路上の標識や信号に反応して、自動的に停止したり、車線を変更したりすることができます。
+        <br>
+        <br>⑤Wearables（ウェアラブルデバイス）
+        <br>健康管理やフィットネス管理に利用されるデバイスが、IoTを活用してより高度な機能を持つようになります。例えば、心拍数や歩数を測定するスマートウォッチは、スマートフォンやパソコンと接続して、データを分析し、適切な運動や生活習慣の改善を促すことができます。あ
+        </ul>
+        <br>
+        <ul>
+          
+        </ul>
+       </div>
+    </div>
+    <div class="right-content">
+    <div class="paihang">
+      <h3 class="hometitle">⬇︎CLICK and Follow me</h3>
+    </div>
+    <div class="weixin">
+      <ul>
+        <a href="/"><img src="images/shen_chen99_qr.png"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+</article>
+<footer>
+  <p>Doyolab 沈忱</p>
+</footer>
+<script src="js/nav.js"></script> 
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(function() { 
+    var elm = jQuery('#left_flow2'); 
+    var startPos = jQuery(elm).offset().top; 
+    jQuery.event.add(window, "scroll", function() { 
+        var p = jQuery(window).scrollTop(); 
+        jQuery(elm).css('position',((p) > startPos) ? 'fixed' : ''); 
+
+        jQuery(elm).css('top',((p) > startPos) ? '0' : '');
+    }); 
+}); 
+</script>
+</body>
+</html>
