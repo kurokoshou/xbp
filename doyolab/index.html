@@ -25,6 +25,7 @@
       padding: 20px;
       text-align: center;
       grid-area: header;
+      
     
     }
 
@@ -47,8 +48,14 @@
       height: 250px;
       margin-top: auto;
       margin-bottom: auto;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      transition: box-shadow 0.3s;
     }
     
+    main:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
     .nimo{
     height: 150px;
     width: 200px;
@@ -105,6 +112,10 @@
       flex-direction: column; /* 将内容垂直排列 */
     }
 
+    .sidebar:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
     .sidebar img {
       max-width: 100%;
       height: auto;
@@ -117,6 +128,20 @@
       text-align: center;
       grid-area: footer;
     }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    header, main , .sidebar {
+      animation: fadeIn 3s ease-in;
+    }
+
+
   </style>
 </head>
 <body>
