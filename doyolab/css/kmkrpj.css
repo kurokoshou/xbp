@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+header {
+    background-color: #83aad1;
+    text-align: center;
+    padding: 20px;
+    border: solid black 5px ;
+}
+.header-links {
+    position: absolute; /* 绝对定位 */
+    top: 20px; /* 距离顶部的距离 */
+    right: 20px; /* 距离右侧的距离 */
+  }
+  
+  .header-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+
+main {
+    display: flex;
+    flex: 1;
+    text-align: center;
+    margin-top: 20px;
+}
+section {
+    flex: 3;
+    padding: 20px;
+    border: solid black 5px ;
+    margin-right: 10px;
+}
+aside {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: solid black 5px ;
+}
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
