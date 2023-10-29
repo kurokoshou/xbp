@@ -1,0 +1,94 @@
+body, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* 设置页眉样式 */
+header {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+/* 设置容器样式 */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* 设置容器高度为视窗的80% */
+}
+
+.octagon {
+  width: 500px; /* 八边形的宽度 */
+  height: 500px; /* 八边形的高度 */
+  background-color: #1c1b1b; /* 背景颜色 */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(45deg); /* 旋转45度，将正方形变为八边形 */
+  clip-path: polygon(29.29% 0%, 70.71% 0%, 100% 29.29%, 100% 70.71%, 70.71% 100%, 29.29% 100%, 0% 70.71%, 0% 29.29%);
+}
+
+/* 设置圆形容器样式 */
+.circle-container {
+  width: 450px; /* 设置容器宽度 */
+  height: 450px; /* 设置容器高度 */
+  background-color: #fcfeff; /* 设置背景颜色 */
+  border-radius: 50%; /* 将容器变成圆形 */
+  overflow: hidden; /* 裁剪超出容器的内容 */
+  text-align: center;
+  font-size: 200px;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  color: #010101;
+  transform: rotate(-45deg); /* 抵消容器的旋转 */
+}
+
+.circle-container img {
+  width: 100%; /* 图片的宽度占满容器 */
+  height: 100%; /* 图片的高度占满容器 */
+  object-fit: cover; /* 图片适应容器大小并裁切 */
+  object-position: center center; /* 图片居中 */
+  border-radius: 50%; /* 将图片设置为圆形，与容器匹配 */
+}
+
+/* 设置左侧边栏和右侧边栏样式 */
+.sidebar-left {
+  width: 20%; /* 侧边栏的宽度 */
+  float: left; /* 左浮动（左侧边栏）或右浮动（右侧边栏） */
+  background-color: #f1f1f1; /* 侧边栏背景颜色 */
+  padding-left: 10px; /* 侧边栏内边距 */
+  color: #333; /* 侧边栏文字颜色 */
+  font-size: 20px;
+  border:#010101 solid 5px
+}
+
+.sidebar-left2 {
+  display: flex;
+  width: 20%; /* 侧边栏的宽度 */
+  float: left; /* 左浮动（左侧边栏）或右浮动（右侧边栏） */
+  clear: left; 
+  background-color: #f1f1f1; /* 侧边栏背景颜色 */
+  padding-left: 10px; /* 侧边栏内边距 */
+  color: #333; /* 侧边栏文字颜色 */
+  font-size: 20px;
+  border:#010101 solid 5px
+}
+
+/* 设置底边栏样式 */
+footer {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  clear: both; /* 清除浮动 */
+}
+
+.main-content {
+  margin: 0 20%; /* 左右侧边栏的宽度之和 */
+  background-color: #fff; /* 主要内容容器的背景颜色 */
+  padding: 20px; /* 主要内容容器内边距 */
+}
