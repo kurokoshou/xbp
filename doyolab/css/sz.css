@@ -78,6 +78,18 @@ header {
   border:#010101 solid 5px
 }
 
+.sidebar-left3 {
+  display: flex;
+  width: 20%; /* 侧边栏的宽度 */
+  float: left; /* 左浮动（左侧边栏）或右浮动（右侧边栏） */
+  clear: left; 
+  background-color: #f1f1f1; /* 侧边栏背景颜色 */
+  padding-left: 10px; /* 侧边栏内边距 */
+  color: #333; /* 侧边栏文字颜色 */
+  font-size: 20px;
+  border:#010101 solid 5px
+}
+
 /* 设置底边栏样式 */
 footer {
   text-align: center;

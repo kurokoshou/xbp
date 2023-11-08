@@ -1,266 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Doyolab SC</title>
-  <style>
- @media screen and (max-width: 768px) {
-  /* 在小屏幕设备上应用的样式 */
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  /* 在中等屏幕设备上应用的样式 */
-}
-
-@media screen and (min-width: 1025px) {
-  /* 在大屏幕设备上应用的样式 */
-}
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f1f1f1;
-      display: grid;
-      grid-template-columns: 1fr 200px; /* 主内容和侧边栏的宽度比例 */
-      grid-gap: 20px; /* 主内容和侧边栏的间距 */
-      grid-template-areas:
-        "header header"
-        "main sidebar"
-        "footer footer";
-      min-height: 100vh;
-    }
-    
-    header {
-      background-image: url("images/doyolab.png");
-      background-position: center;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      grid-area: header;
-      
-    
-    }
-
-    .header-links {
-      position: absolute; /* 绝对定位 */
-      top: 20px; /* 距离顶部的距离 */
-      right: 20px; /* 距离右侧的距离 */
-    }
-    
-    .header-links a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 10px;
-    }
-    
-    main {
-      background-color: #fff;
-      padding: 20px;
-      grid-area: main;
-      height: 250px;
-      margin-top: auto;
-      margin-bottom: auto;
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-      transition: box-shadow 0.3s;
-    }
-    
-    main:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-    .nimo{
-    height: 150px;
-    width: 200px;
-    background-color: #726c6c;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px auto;
-    }
-    
-    .image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.nimo:hover .image-overlay {
-  opacity: 1;
-}
-
-.image-overlay p {
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
-  padding: 10px;
-  font-size: 70px; 
-}
-
-.nimo img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain; /* 图片适应容器大小，保持原始比例 */
-    }
-
-    .kamakura{
-    height: 150px;
-    width: 200px;
-    background-color: #726c6c;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px auto;
-    }
-    
-    .image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.kamakura:hover .image-overlay {
-  opacity: 1;
-}
-
-.image-overlay p {
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
-  padding: 10px;
-  font-size: 20px; 
-}
-
-.kamakura img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain; /* 图片适应容器大小，保持原始比例 */
-    }
-
-
-
-
-  
-    
-    .sidebar {
-      background-color: #ffffff;
-      padding: 20px;
-      grid-area: sidebar;
-      height: 250px;
-      margin-top: auto;
-      margin-bottom: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center; /* 将内容水平和垂直居中 */
-      flex-direction: column; /* 将内容垂直排列 */
-    }
-
-    .sidebar:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-    .sidebar img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-    .footer {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      grid-area: footer;
-    }
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    header, main , .sidebar {
-      animation: fadeIn 3s ease-in;
-    }
-
-
-    .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 40px;
-    text-align: center;
-    grid-area: footer;
-    position: relative;
-  }
-
-  .footer-image {
-    max-width: 100%;
-    max-height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Doyolab SHEN CHEN</h1>
-    <div class="header-links">
-      <a href="#"></a>
-      <a href="#"></a>
-    </div>
-  </header>
-  
-  <main style="display: flex;">
-    <div class="nimo">
-      <a href="note.html">
-        <img src="images/nimo.JPG">
-        <div class="image-overlay">
-          <p>授業NOTE</p>
-        </div> </a>
-    </div>
-    <div class="kamakura">
-      <a href="asuritosafa.html">
-        <img src="images/IMG_7293 2.JPG">
-        <div class="image-overlay">
-          <p>アスリートサーファー</p>
-        </div> </a>
-    </div>
-    <div class="kamakura">
-      <a href="kamakura project calendar.html">
-        <img src="images/4.JPG">
-        <div class="image-overlay">
-          <p>鎌倉カレンダー</p>
-        </div> </a>
-    </div>
-
-  </main>
-
-  <div class="sidebar">
-    <h3>⬇︎CLICK</h3>
-    <a href="https://www.instagram.com/nimomakoto/"><img src="images/shen_chen99_qr.png"></a>
-  </div>
-
-  <footer class="footer">
-      <img src="./images/nimokz.png"class="footer-image">
-  </footer>
-</body>
-</html>
+<html lang="ja">
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/sz.css">
+    </head>
+    <body>
+        <header>
+            <h1>Doyolab</h1>
+        </header>
+        <div class="sidebar-left">
+            <a href="tapo.html">ターポリン</a>
+        </div>
+        <div class="sidebar-left2">
+            <a href="gohan.html">ゼミご飯</a>
+        </div>
+        <div class="sidebar-left3">
+            <a href="calender.html">前期のカレンダー</a>
+        </div>
+        <div class="main-content">
+        <div class="container">
+            <div class="octagon">
+            <div class="circle-container">
+                <img src="/Users/shenchen/mygit/xbp/doyolab/images/cover.JPG">
+            </div>
+            </div>
+        </div>
+        </div>
+        <footer>
+            <p>沈忱</p>
+        </footer>
+    </body>
+    </html>
