@@ -45,7 +45,22 @@ header {
   align-items: center; /* 垂直居中 */
   color: #010101;
   transform: rotate(-45deg); /* 抵消容器的旋转 */
+  box-shadow: 5px 0 10px rgba(74, 139, 245, 0.641); /* 添加阴影 */
+  animation: anotherShadowAnimation 30s infinite linear; /* 顺时针动画，时长 4 秒，无限循环，线性过渡 */
 }
+
+@keyframes anotherShadowAnimation {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 5px 10px 20px rgba(74, 139, 245, 0.641);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 10px 15px 25px rgb(74, 140, 245);
+  }
+}
+
+
 
 .circle-container img {
   width: 100%; /* 图片的宽度占满容器 */
@@ -53,41 +68,50 @@ header {
   object-fit: cover; /* 图片适应容器大小并裁切 */
   object-position: center center; /* 图片居中 */
   border-radius: 50%; /* 将图片设置为圆形，与容器匹配 */
+  position: absolute; /* 将图片脱离文档流 */
 }
+
 
 /* 设置左侧边栏和右侧边栏样式 */
-.sidebar-left {
+.side {
+  display: flex;
+  flex-direction: column; /* 将子元素垂直排列 */
   width: 20%; /* 侧边栏的宽度 */
-  float: left; /* 左浮动（左侧边栏）或右浮动（右侧边栏） */
-  background-color: #f1f1f1; /* 侧边栏背景颜色 */
+  float: left; /* 左浮动 */
+  clear: left; 
+  background-color: #f9f8d9; /* 侧边栏背景颜色 */
   padding-left: 10px; /* 侧边栏内边距 */
   color: #333; /* 侧边栏文字颜色 */
   font-size: 20px;
-  border:#010101 solid 5px
+  border:#010101 solid 3px;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.446); /* 添加阴影 */
+  animation: shadowAnimation 1.5s infinite alternate; /* 添加阴影动画 */
 }
 
-.sidebar-left2 {
-  display: flex;
-  width: 20%; /* 侧边栏的宽度 */
-  float: left; /* 左浮动（左侧边栏）或右浮动（右侧边栏） */
-  clear: left; 
-  background-color: #f1f1f1; /* 侧边栏背景颜色 */
-  padding-left: 10px; /* 侧边栏内边距 */
-  color: #333; /* 侧边栏文字颜色 */
-  font-size: 20px;
-  border:#010101 solid 5px
+/* 去除链接的下划线 */
+.side a {
+  text-decoration: none;
+  color: #333; /* 设置链接颜色 */
+  border: 2px solid #2560c0; /* 初始时，设置边框 */
+  padding: 1px; /* 为链接添加一些内边距 */
 }
-
-.sidebar-left3 {
-  display: flex;
-  width: 20%; /* 侧边栏的宽度 */
-  float: left; /* 左浮动（左侧边栏）或右浮动（右侧边栏） */
-  clear: left; 
-  background-color: #f1f1f1; /* 侧边栏背景颜色 */
-  padding-left: 10px; /* 侧边栏内边距 */
-  color: #333; /* 侧边栏文字颜色 */
-  font-size: 20px;
-  border:#010101 solid 5px
+.side a:visited {
+  color: #333; /* 设置链接被点击后的颜色 */
+}
+/* 鼠标悬停效果 */
+.side a:hover {
+  color: #ffffff; /* 设置鼠标悬停时的颜色 */
+  background-color: #262626; /* 设置鼠标悬停时的背景颜色 */
+  border: 2px solid #e70000; 
+}
+/* 定义阴影动画 */
+@keyframes shadowAnimation {
+  0% {
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.541);
+  }
+  100% {
+    box-shadow: 20px 21px 35px rgb(0, 0, 0);
+  }
 }
 
 /* 设置底边栏样式 */
